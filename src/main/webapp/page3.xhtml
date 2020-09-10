@@ -1,0 +1,105 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+
+<h:head>
+    <title>Menu</title>
+    <h:outputStylesheet library = "css" name = "styles.css"  />
+</h:head>
+
+<h:body>
+    <ui:composition template = "templates/common.xhtml">
+        <ui:define name = "header">
+            <h5>Page3 header</h5>
+        </ui:define>
+
+        <ui:define name = "content">
+            <h2>Menu</h2>
+
+            <h:form>
+                <h:dataTable value = "#{userData.products}" var = "product"
+                             styleClass = "productTable"
+                             headerClass = "productTableHeader"
+                             rowClasses = "productTableOddRow, productTableEvenRow">
+
+                    <h:column>
+                        <f:facet name = "header">Title</f:facet>
+                        <h:inputText value = "#{product.title}"
+                                     size = "10" rendered = "#{product.canEdit}" />
+                        <h:outputText value = "#{product.title}"
+                                      rendered = "#{!product.canEdit}" />
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name = "header">Price</f:facet>
+                        <h:inputText value = "#{product.price}"
+                                     size = "10" rendered = "#{product.canEdit}" />
+                        <h:outputText value = "#{product.price}"
+                                      rendered = "#{!product.canEdit}" />
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name = "header">Description</f:facet>
+                        <h:inputText value = "#{product.description}"
+                                     size = "10" rendered = "#{product.canEdit}" />
+                        <h:outputText value = "#{product.description}"
+                                      rendered = "#{!product.canEdit}" />
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name = "header">Edit</f:facet>
+                        <h:commandButton value = "Edit"
+                                         action = "#{userData.editCafeProduct}"
+                                         rendered = "#{!product.canEdit}">
+                            <f:setPropertyActionListener
+                                    target = "#{userData.cafeProduct}" value = "#{product}"/>
+                        </h:commandButton>
+                    </h:column>
+
+                </h:dataTable>
+
+                <h:commandButton value = "Save Products" action = "#{userData.saveCafeProducts}"/>
+
+                <br/><br/><br/>
+                <h3>Add Product</h3>
+                <hr/>
+
+                <table>
+                    <tr>
+                        <td>Title :</td>
+                        <td><h:inputText size = "20" value = "#{userData.title}" /></td>
+                    </tr>
+
+                    <tr>
+                        <td>Price :</td>
+                        <td><h:inputText size = "10" value = "#{userData.price}" /></td>
+                    </tr>
+
+                    <tr>
+                        <td>Description :</td>
+                        <td><h:inputTextarea value = "#{userData.description}" /></td>
+                    </tr>
+
+                    <tr>
+                        <td> </td>
+                        <td><h:commandButton value = "Add Product"
+                                             action = "#{userData.addProduct}" /></td>
+                    </tr>
+                </table>
+
+            </h:form>
+
+            <h:link value = "Back To Home Page" outcome = "home" />
+        </ui:define>
+
+        <ui:define name = "footer">
+            <h5>Page3 Footer</h5>
+        </ui:define>
+    </ui:composition>
+
+</h:body>
+</html>
