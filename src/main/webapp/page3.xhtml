@@ -8,16 +8,16 @@
 
 <h:head>
     <title>Menu</title>
-    <h:outputStylesheet library = "css" name = "styles.css"  />
 </h:head>
 
 <h:body>
+
     <ui:composition template = "templates/common.xhtml">
         <ui:define name = "header">
             <h5>Page3 header</h5>
         </ui:define>
-
         <ui:define name = "content">
+            <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/styles.css" />
             <h2>Menu</h2>
 
             <h:form>
@@ -35,7 +35,11 @@
                     </h:column>
 
                     <h:column>
-                        <f:facet name = "header">Price</f:facet>
+                        <f:facet name = "header">
+                            <h:commandLink action="#{userData.sortByPrice}" styleClass="productTableHeader">
+                                Price
+                            </h:commandLink>
+                        </f:facet>
                         <h:inputText value = "#{product.price}"
                                      size = "10" rendered = "#{product.canEdit}" />
                         <h:outputText value = "#{product.price}"
@@ -60,8 +64,18 @@
                         </h:commandButton>
                     </h:column>
 
+                    <h:column>
+                        <f:facet name = "header">Delete</f:facet>
+                        <h:commandButton value = "Delete"
+                                         action = "#{userData.deleteProduct}">
+                        <f:setPropertyActionListener
+                                target = "#{userData.cafeProduct}" value = "#{product}" />
+                    </h:commandButton>
+                </h:column>
+
                 </h:dataTable>
 
+                <br/><br/><br/>
                 <h:commandButton value = "Save Products" action = "#{userData.saveCafeProducts}"/>
 
                 <br/><br/><br/>

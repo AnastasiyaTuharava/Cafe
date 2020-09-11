@@ -1,12 +1,15 @@
 package by.softclub.model;
 
-public class CafeProduct {
+
+import org.wildfly.common.annotation.NotNull;
+
+public class CafeProduct implements Comparable{
     private String title;
-    private int price;
+    private double price;
     private String description;
     private boolean canEdit;
 
-    public CafeProduct(String title, int price, String description) {
+    public CafeProduct(String title, double price, String description) {
         this.title = title;
         this.price = price;
         this.description = description;
@@ -21,11 +24,11 @@ public class CafeProduct {
         this.title = title;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -44,4 +47,12 @@ public class CafeProduct {
     public void setCanEdit(boolean canEdit) {
         this.canEdit = canEdit;
     }
+
+
+    @Override
+    public int compareTo(@NotNull Object o) {
+        CafeProduct product = (CafeProduct) o;
+        return price >= product.getPrice() ? -1 : 0;
+    }
+
 }

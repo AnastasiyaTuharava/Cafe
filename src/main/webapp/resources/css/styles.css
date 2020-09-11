@@ -4,18 +4,20 @@
 }
 
 .productTableHeader {
+    color: antiquewhite;
     text-align:center;
-    background:none repeat scroll 0 0 #B5B5B5;
+    background:none repeat scroll 0 0 #7B68EE;
     border-bottom:1px solid #000000;
     padding:2px;
 }
 
 .productTableOddRow {
     text-align:center;
-    background:none repeat scroll 0 0 #FFFFFF;
+    background:none repeat scroll 0 0 #E6E6FA;
 }
 
 .productTableEvenRow {
     text-align:center;
-    background:none repeat scroll 0 0 #D3D3D3;
+    background:none repeat scroll 0 0 #7B68EE;
 }
+
