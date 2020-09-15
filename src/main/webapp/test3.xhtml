@@ -15,4 +15,15 @@
     </p:column>
 </p:dataTable>
 
+<h:form>
+    <p:outputPanel>
+        <p:autoUpdate />
+
+        Time: #{autoUpdateView.time}
+    </p:outputPanel>
+
+    <p:commandButton value="AJAX request" update="@none" process="@this" />
+    <p:commandButton value="AJAX request with ignoreAutoUpdate=true" update="@none" process="@this" ignoreAutoUpdate="true" />
+</h:form>
+
 </html>

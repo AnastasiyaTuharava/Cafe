@@ -3,12 +3,14 @@ package by.softclub.view;
 import org.primefaces.event.SelectEvent;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import java.util.ArrayList;
 import java.util.List;
 
+@ManagedBean(name = "inputTextareaView", eager = true)
 @Named
 @RequestScoped
 public class InputTextareaView {
