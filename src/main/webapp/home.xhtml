@@ -1,0 +1,38 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns = "http://www.w3.org/1999/xhtml"
+      xmlns:h = "http://java.sun.com/jsf/html"
+      xmlns:ui = "http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<h:body>
+
+    <ui:composition template = "templates/common.xhtml">
+        <ui:define name = "content">
+            <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/styles.css" />
+
+            <h:form>
+                <p:growl id="messages" showDetail="false"/>
+
+                <p:menu>
+                    <p:menuitem value="Menu JSF" outcome="showData" icon="pi pi-star" />
+                    <p:menuitem value="Test" outcome="inputTextarea" icon="pi pi-star"/>
+                    <p:menuitem value="Menu PF" outcome="test3" icon="pi pi-star"/>
+                    <p:menuitem value="Carousel" outcome="carousel" icon="pi pi-star"/>
+                </p:menu>
+                <br/><br/><br/>
+                <p:outputPanel>
+                    <p:autoUpdate />
+
+                    Time: #{autoUpdateView.time}
+                </p:outputPanel>
+
+                <p:commandButton value="Update time" update="@none" process="@this" />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</h:body>
+</html>

@@ -21,20 +21,21 @@
             <h2>Menu</h2>
 
             <h:form>
-                <h:dataTable value = "#{userData.products}" var = "product"
+                <p:dataTable value = "#{userData.products}" var = "product" paginator="true" rows="2"
+                             paginatorTemplate ="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
                              styleClass = "productTable"
                              headerClass = "productTableHeader"
                              rowClasses = "productTableOddRow, productTableEvenRow">
 
-                    <h:column>
+                    <p:column>
                         <f:facet name = "header">Title</f:facet>
                         <h:inputText value = "#{product.title}"
                                      size = "10" rendered = "#{product.canEdit}" />
                         <h:outputText value = "#{product.title}"
                                       rendered = "#{!product.canEdit}" />
-                    </h:column>
+                    </p:column>
 
-                    <h:column>
+                    <p:column>
                         <f:facet name = "header">
                             <h:commandLink action="#{userData.sortByPrice}" styleClass="productTableHeader">
                                 Price
@@ -44,17 +45,17 @@
                                      size = "10" rendered = "#{product.canEdit}" />
                         <h:outputText value = "#{product.price}"
                                       rendered = "#{!product.canEdit}" />
-                    </h:column>
+                    </p:column>
 
-                    <h:column>
+                    <p:column>
                         <f:facet name = "header">Description</f:facet>
                         <h:inputText value = "#{product.description}"
                                      size = "10" rendered = "#{product.canEdit}" />
                         <h:outputText value = "#{product.description}"
                                       rendered = "#{!product.canEdit}" />
-                    </h:column>
+                    </p:column>
 
-                    <h:column>
+                    <p:column>
                         <f:facet name = "header">Edit</f:facet>
                         <h:commandButton value = "Edit"
                                          action = "#{userData.editCafeProduct}"
@@ -62,18 +63,22 @@
                             <f:setPropertyActionListener
                                     target = "#{userData.cafeProduct}" value = "#{product}"/>
                         </h:commandButton>
-                    </h:column>
+                    </p:column>
 
-                    <h:column>
-                        <f:facet name = "header">Delete</f:facet>
-                        <h:commandButton value = "Delete"
-                                         action = "#{userData.deleteProduct}">
-                        <f:setPropertyActionListener
-                                target = "#{userData.cafeProduct}" value = "#{product}" />
-                    </h:commandButton>
-                </h:column>
+                    <p:column>
+                        <f:facet name="header">Delete</f:facet>
+                        <h:commandButton value="Delete"
+                                         action="#{userData.deleteProduct}">
+                            <f:setPropertyActionListener
+                                    target="#{userData.cafeProduct}" value="#{product}"/>
+                        </h:commandButton>
+                    </p:column>
 
-                </h:dataTable>
+
+                </p:dataTable>
+
+
+
 
                 <br/><br/><br/>
                 <h:commandButton value = "Save Products" action = "#{userData.saveCafeProducts}"/>

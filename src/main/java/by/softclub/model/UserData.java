@@ -1,27 +1,36 @@
 package by.softclub.model;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.inject.Named;
 import java.io.Serializable;
 import java.util.*;
 
-@ManagedBean(name = "userData", eager = true)
+@Named("userData")
+@ManagedBean(name = "userData")
 @ViewScoped
 public class UserData implements Serializable {
-    private static final long serialVersionUID = 1L;
     private String title;
     private double price;
     private String description;
     private CafeProduct cafeProduct;
+    private List<CafeProduct> products;
 
     private boolean sortAscending = true;
 
-    private List<CafeProduct> products = new ArrayList<CafeProduct>(Arrays.asList(
-            new CafeProduct("Coffee", 3.55, "Black"),
-            new CafeProduct("Coffee", 4, "With milk"),
-            new CafeProduct("Tea", 2, "Green"),
-            new CafeProduct("Tea", 1, "Black")
-    ));
+    @PostConstruct
+    public void init() {
+        products = new ArrayList<>(Arrays.asList(
+                new CafeProduct("Coffee", 3.55, "Black"),
+                new CafeProduct("Coffee", 4, "With milk"),
+                new CafeProduct("Tea", 2, "Green"),
+                new CafeProduct("Tea", 1, "Black"),
+                new CafeProduct("Tea", 5, "Red"),
+                new CafeProduct("Tea", 6, "White")
+        ));
+    }
+
 
     public List<CafeProduct> getProducts() {
         return products;
