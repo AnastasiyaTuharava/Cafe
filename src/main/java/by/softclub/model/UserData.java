@@ -11,7 +11,7 @@ import java.util.*;
 @ManagedBean(name = "userData")
 @ViewScoped
 public class UserData implements Serializable {
-    private String title;
+/*    private String title;
     private double price;
     private String description;
     private CafeProduct cafeProduct;
@@ -108,5 +108,5 @@ public class UserData implements Serializable {
 
     public void setCafeProduct(CafeProduct cafeProduct) {
         this.cafeProduct = cafeProduct;
-    }
+    }*/
 }

@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Named
-@ApplicationScoped
+//@ApplicationScoped
 public class CarService {
 
     private final static String[] colors;

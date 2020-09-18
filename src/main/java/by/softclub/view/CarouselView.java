@@ -4,13 +4,13 @@ import by.softclub.model.Car;
 import by.softclub.model.CarService;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
-import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
 
-@Named
+@ManagedBean
 @ViewScoped
 public class CarouselView implements Serializable {
 
@@ -30,8 +30,8 @@ public class CarouselView implements Serializable {
         return cars;
     }
 
-    public void setService(CarService service) {
-        this.service = service;
+    public void setCars(List<Car> cars) {
+        this.cars = cars;
     }
 
     public Car getSelectedCar() {

@@ -3,10 +3,15 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <h:body>
+<f:view>
+    <h:head>
         <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/styles.css" />
+    </h:head>
+
+    <h:body>
+
         <h:form>
-            <p:dataTable var="product" value="#{userData.products}" style="border: black">
+            <p:dataTable var="product" value="#{userData.products}">
                 <p:column headerText="Title">
                     <h:outputText value="#{product.title}"/>
                 </p:column>
@@ -20,5 +25,5 @@
             </p:dataTable>
         </h:form>
     </h:body>
-
+</f:view>
 </html>

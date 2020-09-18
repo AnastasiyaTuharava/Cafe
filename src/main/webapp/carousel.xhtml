@@ -3,8 +3,9 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+<f:view>
 
-    <h:body>
+    <h:head>
         <style type="text/css">
             .value {
                 font-weight: bold;
@@ -14,7 +15,8 @@
                 margin-bottom: 20px;
             }
         </style>
-
+    </h:head>
+    <h:body>
 
         <h:form id="form">
             <p:carousel value="#{carouselView.cars}" headerText="Responsive" var="car" itemStyle="text-align:center" responsive="true">
@@ -84,6 +86,6 @@
         </h:form>
     </h:body>
 
-
+</f:view>
 
 </html>

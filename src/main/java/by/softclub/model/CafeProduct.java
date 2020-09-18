@@ -1,58 +1,26 @@
 package by.softclub.model;
 
 
-import org.wildfly.common.annotation.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-public class CafeProduct implements Comparable{
+import javax.persistence.*;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "cafe_products")
+public class CafeProduct {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    @Column(name = "title")
     private String title;
-    private double price;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "price", referencedColumnName = "id")
+    private Price price;
+    @Column(name = "description")
     private String description;
-    private boolean canEdit;
-
-    public CafeProduct(String title, double price, String description) {
-        this.title = title;
-        this.price = price;
-        this.description = description;
-        canEdit = false;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public boolean isCanEdit() {
-        return canEdit;
-    }
-
-    public void setCanEdit(boolean canEdit) {
-        this.canEdit = canEdit;
-    }
-
-
-    @Override
-    public int compareTo(@NotNull Object o) {
-        CafeProduct product = (CafeProduct) o;
-        return price >= product.getPrice() ? -1 : 0;
-    }
-
 }
