@@ -23,4 +23,10 @@ public class CafeProduct {
     private Price price;
     @Column(name = "description")
     private String description;
+
+    public CafeProduct(String title, Price price, String description) {
+        this.title = title;
+        this.price = price;
+        this.description = description;
+    }
 }

@@ -21,7 +21,7 @@
             <h2>Menu</h2>
 
             <h:form>
-                <p:dataTable value = "#{userData.products}" var = "product" paginator="true" rows="2"
+                <p:dataTable value = "#{cafeProductView.products}" var = "product" paginator="true" rows="2"
                              paginatorTemplate ="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
                              styleClass = "productTable"
                              headerClass = "productTableHeader"
@@ -37,7 +37,7 @@
 
                     <p:column>
                         <f:facet name = "header">
-                            <h:commandLink action="#{userData.sortByPrice}" styleClass="productTableHeader">
+                            <h:commandLink action="#{cafeProductView.sortByPrice}" styleClass="productTableHeader">
                                 Price
                             </h:commandLink>
                         </f:facet>
@@ -58,19 +58,19 @@
                     <p:column>
                         <f:facet name = "header">Edit</f:facet>
                         <h:commandButton value = "Edit"
-                                         action = "#{userData.editCafeProduct}"
+                                         action = "#{cafeProductView.editCafeProduct}"
                                          rendered = "#{!product.canEdit}">
                             <f:setPropertyActionListener
-                                    target = "#{userData.cafeProduct}" value = "#{product}"/>
+                                    target = "#{cafeProductView.cafeProduct}" value = "#{product}"/>
                         </h:commandButton>
                     </p:column>
 
                     <p:column>
                         <f:facet name="header">Delete</f:facet>
                         <h:commandButton value="Delete"
-                                         action="#{userData.deleteProduct}">
+                                         action="#{cafeProductView.deleteProduct}">
                             <f:setPropertyActionListener
-                                    target="#{userData.cafeProduct}" value="#{product}"/>
+                                    target="#{cafeProductView.cafeProduct}" value="#{product}"/>
                         </h:commandButton>
                     </p:column>
 
@@ -81,7 +81,7 @@
 
 
                 <br/><br/><br/>
-                <h:commandButton value = "Save Products" action = "#{userData.saveCafeProducts}"/>
+                <h:commandButton value = "Save Products" action = "#{cafeProductView.saveCafeProducts}"/>
 
                 <br/><br/><br/>
                 <h3>Add Product</h3>
@@ -90,23 +90,23 @@
                 <table>
                     <tr>
                         <td>Title :</td>
-                        <td><h:inputText size = "20" value = "#{userData.title}" /></td>
+                        <td><h:inputText size = "20" value = "#{cafeProductView.title}" /></td>
                     </tr>
 
                     <tr>
                         <td>Price :</td>
-                        <td><h:inputText size = "10" value = "#{userData.price}" /></td>
+                        <td><h:inputText size = "10" value = "#{cafeProductView.price}" /></td>
                     </tr>
 
                     <tr>
                         <td>Description :</td>
-                        <td><h:inputTextarea value = "#{userData.description}" /></td>
+                        <td><h:inputTextarea value = "#{cafeProductView.description}" /></td>
                     </tr>
 
                     <tr>
                         <td> </td>
                         <td><h:commandButton value = "Add Product"
-                                             action = "#{userData.addProduct}" /></td>
+                                             action = "#{cafeProductView.addProduct}" /></td>
                     </tr>
                 </table>
 
