@@ -1,14 +1,11 @@
 package by.softclub.model;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "cafe_products")
@@ -28,5 +25,9 @@ public class CafeProduct {
         this.title = title;
         this.price = price;
         this.description = description;
+    }
+
+    public CafeProduct() {
+        price = new Price();
     }
 }
