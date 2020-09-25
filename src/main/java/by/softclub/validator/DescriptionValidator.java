@@ -1,6 +1,5 @@
 package by.softclub.validator;
 
-
 import lombok.Data;
 
 import javax.faces.application.FacesMessage;
@@ -16,8 +15,8 @@ import java.util.Optional;
 @Data
 @Named
 @ViewScoped
-@FacesValidator("titleValidator")
-public class TitleValidator implements Validator {
+@FacesValidator("descriptionValidator")
+public class DescriptionValidator implements Validator {
     private FacesMessage message;
 
     @Override
@@ -29,9 +28,9 @@ public class TitleValidator implements Validator {
 
         final String title = (String) Optional.ofNullable(value).orElse("");
 
-        if (title.length() < 2 || title.length() > 20) {
+        if (title.length() > 50) {
 
-            message = new FacesMessage ("Название должно содержать от 3 до 20 символов");
+            message = new FacesMessage ("Описание должно содержать не более 50 символов");
             message.setSeverity(FacesMessage.SEVERITY_ERROR);
 
             throw new ValidatorException(message);

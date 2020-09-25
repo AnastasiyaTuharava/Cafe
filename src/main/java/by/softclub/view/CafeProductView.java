@@ -17,7 +17,7 @@ import java.util.*;
 import javax.ejb.EJB;
 
 @Data
-@Named("userData")
+@Named("cafeProductView")
 @ManagedBean(name = "cafeProductView")
 @ViewScoped
 public class CafeProductView implements Serializable {
@@ -27,14 +27,9 @@ public class CafeProductView implements Serializable {
     private List<CafeProduct> products;
     private CafeProduct selectedProduct;
     private CafeProduct newProduct;
-    private boolean isError = false;
-
-    private String name;
 
     @EJB
     CafeProductService service;
-
-
 
     @PostConstruct
     public void init() {
