@@ -14,36 +14,38 @@
 
             <p:growl id="msgs" showDetail="true"/>
 
-            <p:panelGrid columns="2" id="panel1">
+            <p:messages />
+
+            <p:panelGrid columns="3" id="panel1">
 
                 <f:facet name="header">
                     Add new product
                 </f:facet>
 
-                <p:messages />
-
                 <h:outputLabel for="title" value="Enter title" />
-                <p:inputText id="title" value="#{cafeProductView.newProduct.title}" required="true" />
+                <p:inputText id="title" value="#{cafeProductView.newProduct.title}">
+                    <f:validator validatorId="titleValidator" />
+                </p:inputText>
+                <p:message for="@previous" value="#{titleValidator.message}" />
 
                 <h:outputLabel for="price" value="Enter price" />
                 <p:inputText id="price" value="#{cafeProductView.newProduct.price.amount}" />
+                <p:message for="@previous" value="Error"/>
 
                 <h:outputLabel for="currency" value="Enter currency" />
                 <p:inputText id="currency" value="#{cafeProductView.newProduct.price.currency}" />
+                <p:message for="@previous" />
 
                 <h:outputLabel for="description" value="Enter description" />
                 <p:inputText id="description" value="#{cafeProductView.newProduct.description}" />
+                <p:message for="@previous" />
 
-                <p:commandButton action="#{cafeProductView.save}" update="showData"
-                                 value="Save" icon="ui-icon-check" style="margin:0">
+                <p:commandButton action="#{cafeProductView.save}" update="showData, panel1"
+                                 value="Save" icon="ui-icon-check" style="margin:0" process="panel1" validateClient="true">
                     <p:ajax listener="#{cafeProductView.onRowAdd}" update=":form:msgs" />
                 </p:commandButton>
 
             </p:panelGrid>
-
-            <p:panel>
-
-            </p:panel>
 
             <p:dataTable var="product" value="#{cafeProductView.products}" id="showData" editable="true"
                          selection="#{cafeProductView.selectedProduct}" selectionMode="single" rowKey="#{product.id}">

@@ -27,11 +27,14 @@ public class CafeProductView implements Serializable {
     private List<CafeProduct> products;
     private CafeProduct selectedProduct;
     private CafeProduct newProduct;
+    private boolean isError = false;
+
+    private String name;
 
     @EJB
     CafeProductService service;
 
-    private boolean sortAscending = true;
+
 
     @PostConstruct
     public void init() {
@@ -44,10 +47,6 @@ public class CafeProductView implements Serializable {
         service.save(newProduct);
         products = service.getProducts();
         newProduct = new CafeProduct();
-    }
-
-    public void edit() {
-        service.update(new CafeProduct(title, price, description));
     }
 
     public void delete(CafeProduct product) {

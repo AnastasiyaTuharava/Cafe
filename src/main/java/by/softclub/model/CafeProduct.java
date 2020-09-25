@@ -13,11 +13,14 @@ public class CafeProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @Column(name = "title")
     private String title;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "price", referencedColumnName = "id")
     private Price price;
+
     @Column(name = "description")
     private String description;
 
