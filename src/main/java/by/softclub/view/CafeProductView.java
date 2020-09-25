@@ -11,13 +11,11 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import javax.inject.Named;
 import java.io.Serializable;
 import java.util.*;
-import javax.ejb.EJB;
+import javax.inject.Inject;
 
 @Data
-@Named("cafeProductView")
 @ManagedBean(name = "cafeProductView")
 @ViewScoped
 public class CafeProductView implements Serializable {
@@ -28,8 +26,7 @@ public class CafeProductView implements Serializable {
     private CafeProduct selectedProduct;
     private CafeProduct newProduct;
 
-    @EJB
-    CafeProductService service;
+    @Inject CafeProductService service;
 
     @PostConstruct
     public void init() {

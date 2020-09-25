@@ -24,33 +24,32 @@
 
                 <h:outputLabel for="title" value="Enter title" />
                 <p:inputText id="title" value="#{cafeProductView.newProduct.title}">
-                    <!--<f:validator validatorId="titleValidator" />-->
+                    <f:validator validatorId="titleValidator" />
                 </p:inputText>
                 <p:message for="@previous" value="#{titleValidator.message}" />
 
                 <h:outputLabel for="price" value="Enter price" />
                 <p:inputText id="price" value="#{cafeProductView.newProduct.price.amount}">
-                   <!-- <f:validator validatorId="priceValidator" />-->
+                    <f:validator validatorId="priceValidator" />
                 </p:inputText>
                 <p:message for="@previous" value="#{priceValidator.message}" />
 
-<!--                <h:outputLabel for="currency" value="Enter currency" />-->
-<!--                <p:selectOneMenu id="currency" value="#{cafeProductView.newProduct.price.currency}" style="width:125px">-->
-<!--                    <f:selectItem itemLabel="BYN" itemValue="BYN" />-->
-<!--                    &lt;!&ndash;<f:selectItem itemLabel="USD" itemValue="USD" />-->
-<!--                    <f:selectItem itemLabel="EUR" itemValue="EUR" />&ndash;&gt;-->
-<!--                </p:selectOneMenu>-->
-<!--                <p:message for="@previous" />-->
+                <h:outputLabel for="currency" value="Enter currency" />
+                <p:selectOneMenu id="currency" value="#{cafeProductView.newProduct.price.currency}" style="width:125px">
+                    <f:selectItem itemLabel="BYN" itemValue="BYN" />
+                    <f:selectItem itemLabel="USD" itemValue="USD" />
+                    <f:selectItem itemLabel="EUR" itemValue="EUR" />
+                </p:selectOneMenu>
+                <p:message for="@previous" />
 
                 <h:outputLabel for="description" value="Enter description" />
                 <p:inputText id="description" value="#{cafeProductView.newProduct.description}" >
-              <!--      <f:validator validatorId="descriptionValidator" />-->
+                    <f:validator validatorId="descriptionValidator" />
                 </p:inputText>
                 <p:message for="@previous" value="#{descriptionValidator.message}" />
 
                 <p:commandButton action="#{cafeProductView.save}" update="showData, panel1"
                                  value="Save" icon="ui-icon-check" style="margin:0" process="panel1" >
-
                 </p:commandButton>
 
             </p:panelGrid>
