@@ -15,25 +15,14 @@
                     <p:menuitem value="Cafe Menu" outcome="menu" icon="pi pi-star">
                         <f:param name="i" value="0" />
                     </p:menuitem>
+                    <p:menuitem value="Cafe Menu" outcome="menu" icon="pi pi-search">
+                        <f:param name="i" value="1" />
+                    </p:menuitem>
+                    <p:menuitem value="Cafe Menu" outcome="menu" icon="pi pi-save">
+                        <f:param name="i" value="2" />
+                    </p:menuitem>
                 </p:tabMenu>
             </h:form>
-
-            <!--<ui:composition template = "templates/common.xhtml">
-                <ui:define name = "content">
-                    <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/styles.css" />
-
-                    <h:form>
-                        <p:growl id="messages" showDetail="false"/>
-
-                        <p:menu>
-                            <p:menuitem value="Menu PF" outcome="menu" icon="pi pi-star"/>
-                        </p:menu>
-                        <br/><br/><br/>
-
-                    </h:form>
-                </ui:define>
-            </ui:composition>-->
-
         </h:body>
 
     </f:view>
