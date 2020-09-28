@@ -54,6 +54,8 @@
 
             </p:panelGrid>
 
+            <br/><br/><br/>
+
             <p:dataTable var="product" value="#{cafeProductView.products}" id="showData" editable="true"
                          selection="#{cafeProductView.selectedProduct}" selectionMode="single" rowKey="#{product.id}"
                          rows="5"
@@ -114,6 +116,10 @@
                 </f:facet>
 
             </p:dataTable>
+
+            <br/><br/><br/>
+
+            <p:linkButton outcome="home" value="Home" style="margin-right:20px;" />
 
         </h:form>
     </h:body>
