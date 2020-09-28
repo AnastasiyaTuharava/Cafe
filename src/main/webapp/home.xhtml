@@ -2,27 +2,40 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns = "http://www.w3.org/1999/xhtml"
-      xmlns:h = "http://java.sun.com/jsf/html"
-      xmlns:ui = "http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
-<h:body>
-
-    <ui:composition template = "templates/common.xhtml">
-        <ui:define name = "content">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view>
+        <h:head>
             <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/styles.css" />
-
+        </h:head>
+        <h:body>
             <h:form>
-                <p:growl id="messages" showDetail="false"/>
-
-                <p:menu>
-                    <p:menuitem value="Menu PF" outcome="menu" icon="pi pi-star"/>
-                </p:menu>
-                <br/><br/><br/>
-
+                <p:tabMenu activeIndex="#{param.i}">
+                    <p:menuitem value="Cafe Menu" outcome="menu" icon="pi pi-star">
+                        <f:param name="i" value="0" />
+                    </p:menuitem>
+                </p:tabMenu>
             </h:form>
-        </ui:define>
-    </ui:composition>
 
-</h:body>
+            <!--<ui:composition template = "templates/common.xhtml">
+                <ui:define name = "content">
+                    <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/styles.css" />
+
+                    <h:form>
+                        <p:growl id="messages" showDetail="false"/>
+
+                        <p:menu>
+                            <p:menuitem value="Menu PF" outcome="menu" icon="pi pi-star"/>
+                        </p:menu>
+                        <br/><br/><br/>
+
+                    </h:form>
+                </ui:define>
+            </ui:composition>-->
+
+        </h:body>
+
+    </f:view>
+
 </html>

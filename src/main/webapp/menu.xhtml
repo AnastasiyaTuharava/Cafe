@@ -55,7 +55,12 @@
             </p:panelGrid>
 
             <p:dataTable var="product" value="#{cafeProductView.products}" id="showData" editable="true"
-                         selection="#{cafeProductView.selectedProduct}" selectionMode="single" rowKey="#{product.id}">
+                         selection="#{cafeProductView.selectedProduct}" selectionMode="single" rowKey="#{product.id}"
+                         rows="5"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                         rowsPerPageTemplate="5,10,15">
 
                 <p:ajax event="rowEdit" listener="#{cafeProductView.onRowEdit}" update=":form:msgs" />
                 <p:ajax event="rowEditCancel" listener="#{cafeProductView.onRowCancel}" update=":form:msgs" />
@@ -93,10 +98,13 @@
                 </p:column>
 
                 <p:column headerText="Options" style="width:50px">
-                    <p:rowEditor/>
+                    <p:rowEditor>
+                    </p:rowEditor>
                 </p:column>
+
                 <p:column headerText="Delete" style="width:50px">
-                    <p:commandButton icon="ui-icon-circle-close" action="#{cafeProductView.delete(product)}" update="showData">
+                    <p:commandButton icon="ui-icon-circle-close" action="#{cafeProductView.delete(product)}"
+                                     update="showData" process="showData">
                         <p:ajax listener="#{cafeProductView.onRowDelete}" update=":form:msgs" />
                     </p:commandButton>
                 </p:column>

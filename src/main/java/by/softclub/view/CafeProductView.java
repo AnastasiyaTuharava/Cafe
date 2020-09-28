@@ -46,6 +46,11 @@ public class CafeProductView implements Serializable {
         products = service.getProducts();
     }
 
+    public void edit(CafeProduct product) {
+        service.update(product);
+        products = service.getProducts();
+    }
+
     public void onRowEdit(RowEditEvent<CafeProduct> event) {
         FacesMessage msg = new FacesMessage("Product edited", "id = " + String.valueOf(event.getObject().getId()));
         FacesContext.getCurrentInstance().addMessage(null, msg);
